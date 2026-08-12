@@ -13,8 +13,7 @@ function getMoyen(int $classe_id, int $anneScolaire_id, int $periode_id, int $ma
     AND i.anneScolaire_id = :anneScolaire_id
     AND e.periode_id = :periode_id     
     AND mc.matiere_id= :matiere_id";
-     var_dump('devv');
-         die;
+    
 
     $moyens = executeQuery($pdo,$sql,[
                 'classe_id' => $classe_id,

@@ -1,8 +1,4 @@
-          <?php foreach ($classes as $classe):?>
-               <?php echo $classe[0]['id']?>
-
-          <?php endforeach?>
-
+        
 <!DOCTYPE html>
 <html lang="fr">
 <head>
