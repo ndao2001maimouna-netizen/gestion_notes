@@ -1,4 +1,4 @@
-        
+    
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -276,10 +276,12 @@
     <div class="field">
       <label for="classe">Classe</label>
       <div class="select-wrap">
-        <select id="classe" name="classe" >
+        <select id="classe" name="classe">
            <option></option>
 
-          <?php  foreach($classes as $classe):?>
+          <?php 
+
+            foreach($classes as $classe):?>
 
           <option value="<?= $classe['id']?>" ><?php echo $classe['nomclasse']?></option>  
             <?php endforeach;?>       
@@ -291,10 +293,10 @@
     <div class="field">
       <label for="matiere">Matière</label>
       <div class="select-wrap">
-        <select id="matiere"  name="matiere" value="<?php echo $matiere['id']?>">
+        <select id="matiere"  name="matiere" >
             <option></option>
            <?php foreach($matieres as $matiere):?>
-          <option><?php echo $matiere['nommatiere']?></option>  
+          <option value="<?php echo $matiere['id']?>"><?php echo $matiere['nommatiere']?></option>  
             <?php endforeach;?>  
         </select>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -307,7 +309,7 @@
         <select id="periode"  name="periode"  value="<?php echo $periode['id']?>">
            <option></option>
           <?php foreach($periodes  as $periode):?>
-          <option><?php echo $periode['nomperiode']?></option>  
+          <option value="<?= $periode['id']?>" ><?php echo $periode['nomperiode']?></option>  
             <?php endforeach;?> 
         </select>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>

@@ -16,9 +16,9 @@ function afficherNote(){
             $selectionclasse = $_POST['classe'];
             $selectionmatiere = $_POST['matiere'];
             $selectionperiode = $_POST['periode'];
-            // var_dump($_POST['classe']);
-            // die;
             $moyens = getMoyen($selectionclasse,$selectionmatiere,$selectionperiode );
+            // var_dump($moyens);
+            // die;
           }
           
     require_once dirname(__DIR__)."/views/saisiesNote.html.php";
