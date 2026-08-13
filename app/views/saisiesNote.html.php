@@ -306,7 +306,7 @@
     <div class="field">
       <label for="periode">Période</label>
       <div class="select-wrap">
-        <select id="periode"  name="periode"  value="<?php echo $periode['id']?>">
+<select id="periode" name="periode" value="<?= isset($periode) ? $periode['id'] : '' ?>">
            <option></option>
           <?php foreach($periodes  as $periode):?>
           <option value="<?= $periode['id']?>" ><?php echo $periode['nomperiode']?></option>  
@@ -329,8 +329,8 @@
 
     <div class="stat">
       <div class="stat-label">Moyenne de classe</div>
-            <?php foreach($moyens  as $moyen):?>
-      <div class="stat-value" id="classAvg"><?php echo $moyen['moyenneclasse']?><span>/20</span></div>
+            <?php foreach($moyens as $moyen):?>
+<div class="stat-value" id="classAvg"><?= isset($moyen) && is_array($moyen) ? $moyen['moyenclasse'] : '0' ?>/20</div>
        <?php endforeach;?>
     </div>
     
