@@ -388,7 +388,7 @@
     <div class="stat">
       <div class="stat-label">Moyenne de classe</div>
             <?php foreach($moyens as $moyen):?>
-    <div class="stat-value" id="classAvg"> <?= $moyens[0]['moyenclasse'] ?? 0 ?>/20</div>
+    <div class="stat-value" id="classAvg"> <?php echo $moyens["moyenneclasse"]; ?>/20</div>
        <?php endforeach;?>
     </div>
     
