@@ -1,5 +1,4 @@
   <?php
-  require_once dirname(__DIR__)."/models/EvaluationModel.php";
    require_once dirname(__DIR__)."/models/ClasseModel.php";
    require_once dirname(__DIR__)."/models/MatiereModel.php";
    require_once dirname(__DIR__)."/models/PeriodeModel.php";
