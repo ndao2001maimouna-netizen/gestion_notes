@@ -4,6 +4,11 @@ $routers = [
      '/' => [
         'controller' => 'noteController',
         'action' => 'afficherNote'
+    ],
+
+     '/login' => [
+        'controller' => 'authentification',
+        'action' => 'afficherAuthentification'
     ]
 ];
 

@@ -364,7 +364,7 @@
     <div class="field">
       <label for="periode">Période</label>
       <div class="select-wrap">
-<select id="periode" name="periode" value="<?= isset($periode) ? $periode['id'] : '' ?>">
+<select id="periode" name="periode" >
            <option></option>
           <?php foreach($periodes  as $periode):?>
           <option value="<?= $periode['id']?>"> <?php echo $periode['nomperiode']?></option>  

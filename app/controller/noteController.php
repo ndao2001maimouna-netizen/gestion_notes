@@ -18,7 +18,8 @@ function afficherNote(){
             $selectionclasse = (int)$_POST['classe'];
             $selectionmatiere = (int)$_POST['matiere'];
             $selectionperiode = (int)$_POST['periode'];
-          
+           // var_dump($classes);
+          //   die;
             $moyens = getMoyen($selectionclasse,$selectionperiode,$selectionmatiere );
           }
 
