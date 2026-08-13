@@ -229,6 +229,65 @@
   @media (prefers-reduced-motion: reduce){
     *{transition:none !important;}
   }
+  .student-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .student-name {
+            font-weight: 600;
+        }
+
+        .student-id {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .input-note {
+            width: 60px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .composition-cell .input-note {
+            background-color: #f4fbf7;
+            border-color: #c7ebd1;
+        }
+
+        .col-avg {
+            font-weight: 700;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .badge-good { background-color: #f0fdf4; color: #16a34a; }
+        .badge-verygood { background-color: #f0fdf4; color: #15803d; }
+        .badge-fair { background-color: #fefce8; color: #a16207; }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: currentColor;
+        }
+
+        footer {
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
 </style>
 </head>
 <body>
@@ -272,13 +331,12 @@
     </div>
   </div>
 
-  <form class="filters-card" id="filtersCard" method="POST" action ="http://localhost:8000/" >
+  <form class="filters-card" id="filtersCard" method="POST" action ="http://localhost:8001/" >
     <div class="field">
       <label for="classe">Classe</label>
       <div class="select-wrap">
         <select id="classe" name="classe">
-           <option></option>
-
+           <option value="0"></option>
           <?php 
 
             foreach($classes as $classe):?>
@@ -309,7 +367,7 @@
 <select id="periode" name="periode" value="<?= isset($periode) ? $periode['id'] : '' ?>">
            <option></option>
           <?php foreach($periodes  as $periode):?>
-          <option value="<?= $periode['id']?>" ><?php echo $periode['nomperiode']?></option>  
+          <option value="<?= $periode['id']?>"> <?php echo $periode['nomperiode']?></option>  
             <?php endforeach;?> 
         </select>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -330,7 +388,7 @@
     <div class="stat">
       <div class="stat-label">Moyenne de classe</div>
             <?php foreach($moyens as $moyen):?>
-<div class="stat-value" id="classAvg"><?= isset($moyen) && is_array($moyen) ? $moyen['moyenclasse'] : '0' ?>/20</div>
+    <div class="stat-value" id="classAvg"> <?= $moyens[0]['moyenclasse'] ?? 0 ?>/20</div>
        <?php endforeach;?>
     </div>
     
@@ -338,7 +396,7 @@
 
   
       <div class="table-card">
-    <table>
+   <table>
       <thead>
         <tr>
           <th class="num">Élève</th>
@@ -351,8 +409,25 @@
       </thead>
       <tbody id="tbody">
         <!-- lignes générées par JS -->
-      </tbody>
-      <tfoot>
+          <?php foreach($eleves as $eleve):?>
+                 <tr>
+                    <td>
+                        <div class="student-info">
+                            <div class="avatar" style="width:28px; height:28px; font-size:11px;"></div>
+                            <div>
+                                <div class="student-name"><?php echo $eleve ["prenom"]?> <?php echo $eleve ["nom"]?></div>
+                                <div class="student-id">`<?php echo $eleve ["matricule"]?></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="text" class="input-note" value="<?php echo $eleve ["devoir1"]?>"></td>
+                    <td><input type="text" class="input-note" value="<?php echo $eleve ["devoir2"]?>"></td>
+                    <td class="composition-cell"><input type="text" class="input-note" value="<?php echo $eleve ["composition"]?>"></td>
+                    <td class="col-avg"><?php echo $eleve["moyenne"]?></td>
+                    <td><span class="badge badge-good"><span class="dot"></span><?php echo $eleve["appréciation"]?></span></td>
+                </tr>
+         <?php endforeach;?>
+          <tfoot>
         <tr><td colspan="6">Navigation clavier disponible · valeurs limitées de 0 à 20</td></tr>
       </tfoot>
     </table>
